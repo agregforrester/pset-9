@@ -111,18 +111,87 @@ public class ProblemSet9 {
     }
 
     public boolean twentyFour(int[] arr) {
-        
+        if (arr == null) {
+            return false;
+        } else {
+            boolean next2 = false;
+            boolean next4 = false;
+
+            for (int j : arr) {
+                if (arr[j] == 2) {
+                    if (arr[j - 1] == arr[j]) {
+                        next2 = true;
+                    }
+                } else if (arr[j] == 4) {
+                    if (arr[j - 1] == arr[j]) {
+                        next4 = true;
+                    }
+                }
+
+            }
+
+            if (next2 && !next4) {
+                return true;
+            } else return !next2 && next4;
+        }
     }
 
     public boolean fourteen(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        } else {
+            for (int j : arr) {
+                if (arr[j] != 1 || arr[j] != 4) {
+                    return false;
+                }
+            }
 
+            return true;
+        }
     }
 
     public int centeredAverage(int[] arr) {
+        if (arr == null || arr.length < 3) {
+            return -1;
+        } else {
+            int sum = 0;
 
+            for (int j = 1; j < arr.length - 1; j++) {
+                sum += arr[j];
+            }
+
+            return sum / (arr.length - 2);
+        }
     }
 
     public int outliers(int[] arr) {
+        if (arr == null || arr.length < 1) {
+            return -1;
+        } else {
+            int largest = 0;
+            int smallest = 0;
 
+            for (int j : arr) {
+                if (j == 0) {
+                    largest = arr[j];
+                } else {
+                    if (arr[j] > largest) {
+                        largest = arr[j];
+                    }
+                }
+            }
+
+            for (int k : arr) {
+                if (k == 0) {
+                    smallest = arr[k];
+                } else {
+                    if (arr[k] < smallest) {
+                        smallest = arr[k];
+                    }
+                }
+            }
+
+            return largest - smallest;
+        }
     }
 }
